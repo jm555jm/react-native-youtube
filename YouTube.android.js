@@ -164,6 +164,10 @@ export default class YouTube extends React.Component {
         .catch(errorMessage => reject(errorMessage)));
   }
 
+  playVideo() {
+
+  }
+
   render() {
     return (
       <View style={[styles.container, this.props.style]}>

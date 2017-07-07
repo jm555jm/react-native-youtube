@@ -118,4 +118,16 @@ RCT_EXPORT_METHOD(currentTime:(nonnull NSNumber *)reactTag resolver:(RCTPromiseR
     }];
 }
 
+RCT_EXPORT_METHOD(playVideo:(nonnull NSNumber *)reactTag)
+{
+    [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, UIView *> *viewRegistry) {
+        RCTYouTube *youtube = (RCTYouTube*)viewRegistry[reactTag];
+        if ([youtube isKindOfClass:[RCTYouTube class]]) {
+            [youtube playVideo];
+        } else {
+            RCTLogError(@"Cannot seekTo: %@ (tag #%@) is not RCTYouTube", youtube, reactTag);
+        }
+    }];
+}
+
 @end
